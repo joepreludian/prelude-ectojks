@@ -10,14 +10,13 @@ def call(Map conf = [:]) {
 
     pipeline {
         agent any
-            stages {
-                stage('Testing') {
-                    steps {
-                        setBuildDetails()
-                    }
+        stages {
+            stage('Testing') {
+                steps {
+                    setBuildDetails()
                 }
             }
+        }
     }
 }
 
-}
