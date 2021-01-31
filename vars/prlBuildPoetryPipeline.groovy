@@ -23,16 +23,14 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     }
 
     html_content = """<h4>${header}</h4>
-        <table class='table-striped table-bordered table-sm'>
-            <thead>
-                <tr>${table_cols}</tr>
-            </thead>
-            <tbody>
-                ${table_rows}
-            </tbody>
+        <table border=1>
+            <tr>${table_cols}</tr>
+            ${table_rows}
         </table>"""
 
     currentBuild.rawBuild.project.description = html_content
+
+    currentBuild.description = html_content
     currentBuild.displayName = "Display Name"
 }
 
