@@ -22,7 +22,6 @@ def prlBuildFancyDescription(Map conf = [
     cols.each { item ->
         table_cols.append("<th>${item}</th>")
     }
-    print table_cols
 
     table_rows = new StringBuffer()
     rows.each { line ->
@@ -32,7 +31,6 @@ def prlBuildFancyDescription(Map conf = [
         }
         table_rows << '</tr>'
     }
-    print table_rows
 
     htmlContent = """
         <table class=\"sortable pane bigtable stripped-odd\">
@@ -54,6 +52,7 @@ def prlBuildFancyDescription(Map conf = [
 }
 
 def call(Map conf = [:]) {
+    import com.preludian.ectojs.JenkinsBuild
 
     pipeline {
         agent any
@@ -62,6 +61,7 @@ def call(Map conf = [:]) {
                 steps {
                     script {
                         return_whoami = sh script: 'whoami', returnStdout: true
+                        JenkinsBuild.makeBuildDescription()
                     }
                 }
             }
