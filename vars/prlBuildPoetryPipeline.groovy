@@ -34,7 +34,6 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
 
     currentBuild.rawBuild.project.description = html_content
 
-    currentBuild.displayName = 'DISPLAY NAME'
 }
 
 def call(Map conf = [:]) {
