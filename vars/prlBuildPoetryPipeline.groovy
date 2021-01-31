@@ -8,12 +8,12 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     cols = conf['cols'] ?: []
     rows = conf['rows'] ?: []
 
-    def table_cols = ""
+    table_cols = "TCOLS"
     cols.each { item ->
         table_cols << "<th>${item}</th>"
     }
 
-    def table_rows = ""
+    table_rows = "TROWS"
     rows.each { line ->
         table_rows << '<tr>'
         line.each { col ->
