@@ -60,7 +60,7 @@ def call(Map conf = [:]) {
             stage('set diff vars') {
                 steps {
                     script {
-                        return_whoami = sh 'whoami', returnStdout: true
+                        return_whoami = sh script: 'whoami', returnStdout: true
                     }
                 }
             }
