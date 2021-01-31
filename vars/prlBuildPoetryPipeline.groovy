@@ -15,7 +15,7 @@ def prlBuildFancyDescription(Map conf = [
     header = conf['header'] ?: 'Default Header'
     cols = conf['cols'] ?: []
     rows = conf['rows'] ?: []
-    buildInfo = conf['displayName'] ?: null
+    displayName = conf['displayName'] ?: null
     setRootBuild = conf['setRootBuild'] ?: false
 
     table_cols = new StringBuffer()
@@ -42,14 +42,15 @@ def prlBuildFancyDescription(Map conf = [
         <h4>${header}</h4>
     """
 
-    print htmlContent
+    if (setRootBuild) {
+        currentBuild.rawBuild.project.description = htmlContent
+    }
 
-    currentBuild.rawBuild.project.description = htmlContent
-
-    //currentBuild.description = html_content
-    if ( conf['displayName'] != null) {
+    if (displayName != null) {
         currentBuild.displayName = "${currentBuild.number} - ${conf['displayName']}"
     }
+
+    currentBuild.description = htmlContent
 }
 
 def call(Map conf = [:]) {
@@ -69,10 +70,11 @@ def call(Map conf = [:]) {
                     script {
                         prlBuildFancyDescription([
                                 header: "Whoami: ${return_whoami}",
-                                cols: ['Main Column', 'Secondary Column', 'Latest Column'],
+                                displayName: 'myBuild',
+                                cols: ['Project', 'Version', 'Test'],
                                 rows: [
-                                        ['Test1', 'test2', 'Test3'],
-                                        ['Test3', 'Test 4', 'Jon Trigueiro']
+                                        ['Project name', 'Temp version', 'Test info'],
+                                        ['Test3', 'Test 4', 'Test 5']
                                 ]
                         ])
                     }
