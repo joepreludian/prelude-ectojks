@@ -2,13 +2,21 @@
  * Pipeline for Poetry build
  */
 
-def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) {
+def prlBuildFancyDescription(Map conf = [
+        header: null,
+        displayName: null,
+        setRootBuild: false,
+        cols: [],
+        rows: []
+    ]) {
 
     System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
     header = conf['header'] ?: 'Default Header'
     cols = conf['cols'] ?: []
     rows = conf['rows'] ?: []
+    buildInfo = conf['displayName'] ?: null
+    setRootBuild = conf['setRootBuild'] ?: false
 
     table_cols = new StringBuffer()
     cols.each { item ->
@@ -34,20 +42,14 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
         <h4>${header}</h4>
     """
 
-    /*
-    PolicyFactory policy = new HtmlPolicyBuilder()
-            .allowElements('table', 'tr', 'th', 'td', 'a')
-            .allowAttributes("class", "href")
-            .toFactory();
-
-    String safeHTML = policy.sanitize(htmlContent);
-    */
     print htmlContent
 
     currentBuild.rawBuild.project.description = htmlContent
 
     //currentBuild.description = html_content
-    //currentBuild.displayName = "Display Name"
+    if ( conf['displayName'] != null) {
+        currentBuild.displayName = "${currentBuild.number} - ${conf['displayName']}"
+    }
 }
 
 def call(Map conf = [:]) {
@@ -55,16 +57,25 @@ def call(Map conf = [:]) {
     pipeline {
         agent any
         stages {
+            stage('set diff vars') {
+                steps {
+                    script {
+                        return_whoami = sh 'whoami', returnStdout: true
+                    }
+                }
+            }
             stage('Gen Table') {
                 steps {
-                    prlBuildFancyDescription([
-                            header: 'Main Table header',
-                            cols: ['Main Column', 'Secondary Column', 'Latest Column'],
-                            rows: [
-                                    ['Test1', 'test2', 'Test3'],
-                                    ['Test3', 'Test 4', 'Jon Trigueiro']
-                            ]
-                    ])
+                    script {
+                        prlBuildFancyDescription([
+                                header: "Whoami: ${return_whoami}",
+                                cols: ['Main Column', 'Secondary Column', 'Latest Column'],
+                                rows: [
+                                        ['Test1', 'test2', 'Test3'],
+                                        ['Test3', 'Test 4', 'Jon Trigueiro']
+                                ]
+                        ])
+                    }
                 }
             }
         }
