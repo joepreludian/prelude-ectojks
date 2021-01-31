@@ -49,10 +49,10 @@ def call(Map conf = [:]) {
                 steps {
                     prlBuildFancyDescription([
                             header: 'Main Table header',
-                            cols: ['Main Column', 'Secondary Column'],
+                            cols: ['Main Column', 'Secondary Column', 'Latest Column'],
                             rows: [
-                                    ['Test1', 'test2'],
-                                    ['Test3', 'Test 4']
+                                    ['Test1', 'test2', 'Test3'],
+                                    ['Test3', 'Test 4', 'Jon Trigueiro']
                             ]
                     ])
                 }
