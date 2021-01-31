@@ -8,8 +8,12 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     cols = conf['cols'] ?: []
     rows = conf['rows'] ?: []
 
-    table_header = cols.join('</th><th>')
-    html_content = "<h4>${header}</h4><table class='table table-striped table-bordered table-sm'><tr>${table_header}</th></table>"
+    table_cols = ''
+    cols.each { item ->
+        table_cols.concat("<th>${item}</th>")
+    }
+
+    html_content = "<h4>${header}</h4><table class='table table-striped table-bordered table-sm'><tr>${table_cols}</tr></table>"
 
     currentBuild.rawBuild.project.description = html_content
 }
@@ -19,9 +23,12 @@ def call(Map conf = [:]) {
     pipeline {
         agent any
         stages {
-            stage('Testing') {
+            stage('Gen Table') {
                 steps {
-                    prlBuildFancyDescription(header: 'Table', cols: ['Col1', 'Column2'], rows: ['Test1', 'test2'])
+                    prlBuildFancyDescription(
+                            header: 'Main Table header',
+                            cols: ['Main Column', 'Secondary Column'],
+                            rows: ['Test1', 'test2'])
                 }
             }
         }
