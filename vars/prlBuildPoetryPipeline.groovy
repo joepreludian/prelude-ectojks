@@ -51,9 +51,6 @@ def prlBuildFancyDescription(Map conf = [
     }
 
     currentBuild.description = htmlContent
-
-    desc = JenkinsUtils.makeBuildDescription()
-    print(desc)
 }
 
 def call(Map conf = [:]) {
@@ -64,6 +61,9 @@ def call(Map conf = [:]) {
             stage('set diff vars') {
                 steps {
                     script {
+                        desc = JenkinsUtils.makeBuildDescription()
+                        print(desc)
+
                         return_whoami = sh script: 'whoami', returnStdout: true
                     }
                 }
