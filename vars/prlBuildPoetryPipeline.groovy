@@ -2,7 +2,7 @@
  * Pipeline for Poetry build
  */
 
-import com.preludian.ectojs.jenkinsUtils
+import com.preludian.ectojs.JenkinsUtils
 
 def prlBuildFancyDescription(Map conf = [
         header: null,
