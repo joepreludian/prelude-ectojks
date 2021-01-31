@@ -25,8 +25,8 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     print table_rows
 
     html_content = """
-        <table border=\"1\">
-            <tr>${table_cols}</tr>
+        <table class=\"sortable pane bigtable stripped-odd\">
+            <tr class=\"header\">${table_cols}</tr>
             ${table_rows}
         </table>
         <h4>${header}</h4>
