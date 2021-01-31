@@ -2,13 +2,14 @@
  * Pipeline for Poetry build
  */
 
-def buildTable(Map conf = [header: 'Header', cols: [], rows: []]) {
+def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) {
 
     header = conf['header'] ?: 'Default Header'
     cols = conf['cols'] ?: []
     rows = conf['rows'] ?: []
 
     html_content = "<h4>${header}</h4><table><tr>${cols.join('</th><th>')}</th></table>"
+
     currentBuild.rawBuild.project.description = html_content
 }
 
@@ -19,7 +20,7 @@ def call(Map conf = [:]) {
         stages {
             stage('Testing') {
                 steps {
-                    setBuildDetails(header: 'Table', cols: ['Col1', 'Column2'], rows: ['Test1', 'test2'])
+                    prlBuildFancyDescription(header: 'Table', cols: ['Col1', 'Column2'], rows: ['Test1', 'test2'])
                 }
             }
         }
