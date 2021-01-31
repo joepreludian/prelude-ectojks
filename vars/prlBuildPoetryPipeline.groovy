@@ -10,10 +10,27 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
 
     table_cols = ''
     cols.each { item ->
-        table_cols = table_cols.concat("<th>${item}</th>")
+        table_cols << "<th>${item}</th>"
     }
 
-    html_content = "<h4>${header}</h4><table class='table-striped table-bordered table-sm'><tr>${table_cols}</tr></table>"
+    table_rows = ''
+    rows.each { line ->
+        table_rows << '<tr>'
+        item.each { col ->
+            table_rows << "<td>${col}</td>"
+        }
+        table_rows << '</tr>'
+    }
+
+    html_content = """<h4>${header}</h4>
+        <table class='table-striped table-bordered table-sm'>
+            <thead>
+                <tr>${table_cols}</tr>
+            </thead>
+            <tbody>
+                ${table_rows}
+            </tbody>
+        </table>"""
 
     currentBuild.rawBuild.project.description = html_content
 }
@@ -28,7 +45,7 @@ def call(Map conf = [:]) {
                     prlBuildFancyDescription([
                             header: 'Main Table header',
                             cols: ['Main Column', 'Secondary Column'],
-                            rows: ['Test1', 'test2']
+                            rows: [['Test1', 'test2'], ['Test3', 'Test 4']]
                     ])
                 }
             }
