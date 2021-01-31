@@ -25,7 +25,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     print table_rows
 
     html_content = """
-        <table border="1">
+        <table border=\"1\">
             <tr>${table_cols}</tr>
             ${table_rows}
         </table>
