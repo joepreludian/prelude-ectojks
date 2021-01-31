@@ -33,7 +33,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
         </table>"""
 
     currentBuild.rawBuild.project.description = html_content
-
+    currentBuild.displayName = "Display Name"
 }
 
 def call(Map conf = [:]) {
@@ -46,7 +46,10 @@ def call(Map conf = [:]) {
                     prlBuildFancyDescription([
                             header: 'Main Table header',
                             cols: ['Main Column', 'Secondary Column'],
-                            rows: [['Test1', 'test2'], ['Test3', 'Test 4']]
+                            rows: [
+                                    ['Test1', 'test2'],
+                                    ['Test3', 'Test 4']
+                            ]
                     ])
                 }
             }
