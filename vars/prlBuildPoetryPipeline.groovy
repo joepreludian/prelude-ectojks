@@ -62,7 +62,7 @@ def call(Map conf = [:]) {
                 steps {
                     script {
                         return_whoami = sh script: 'whoami', returnStdout: true
-                        JenkinsBuild.makeBuildDescription()
+                        JenkinsBuild().makeBuildDescription()
                     }
                 }
             }
