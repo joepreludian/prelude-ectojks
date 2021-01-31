@@ -8,7 +8,8 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     cols = conf['cols'] ?: []
     rows = conf['rows'] ?: []
 
-    html_content = "<h4>${header}</h4><table><tr>${cols.join('</th><th>')}</th></table>"
+    table_header = cols.join('</th><th>')
+    html_content = "<h4>${header}</h4><table><tr>${table_header}</th></table>"
 
     currentBuild.rawBuild.project.description = html_content
 }
