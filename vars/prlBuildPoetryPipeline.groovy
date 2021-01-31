@@ -10,10 +10,10 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
 
     table_cols = ''
     cols.each { item ->
-        table_cols.concat("<th>${item}</th>")
+        table_cols = table_cols.concat("<th>${item}</th>")
     }
 
-    html_content = "<h4>${header}</h4><table class='table table-striped table-bordered table-sm'><tr>${table_cols}</tr></table>"
+    html_content = "<h4>${header}</h4><table class='table-striped table-bordered table-sm'><tr>${table_cols}</tr></table>"
 
     currentBuild.rawBuild.project.description = html_content
 }
