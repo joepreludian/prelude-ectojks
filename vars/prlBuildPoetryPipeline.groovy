@@ -24,11 +24,13 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     }
     print table_rows
 
-    html_content = """<h4>${header}</h4>
-        <table border=1>
+    html_content = """
+        <table border="1">
             <tr>${table_cols}</tr>
             ${table_rows}
-        </table>"""
+        </table>
+        <h4>${header}</h4>
+    """
 
     echo html_content
 
