@@ -52,7 +52,7 @@ def prlBuildFancyDescription(Map conf = [
 
     currentBuild.description = htmlContent
 
-    utils = com.preludian.ectojs.utils()
+    utils = new com.preludian.ectojs.utils()
     desc = utils.makeBuildDescription()
     print(desc)
 }
