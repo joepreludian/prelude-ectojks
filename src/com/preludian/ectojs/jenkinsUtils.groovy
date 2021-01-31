@@ -1,4 +1,4 @@
-package com.preludian.ectojs.utils
+package com.preludian.ectojs
 
 def makeBuildDescription() {
     return 'Alright'
