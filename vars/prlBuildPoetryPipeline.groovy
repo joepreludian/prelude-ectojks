@@ -25,10 +25,11 @@ def call(Map conf = [:]) {
         stages {
             stage('Gen Table') {
                 steps {
-                    prlBuildFancyDescription(
+                    prlBuildFancyDescription([
                             header: 'Main Table header',
                             cols: ['Main Column', 'Secondary Column'],
-                            rows: ['Test1', 'test2'])
+                            rows: ['Test1', 'test2']
+                    ])
                 }
             }
         }
