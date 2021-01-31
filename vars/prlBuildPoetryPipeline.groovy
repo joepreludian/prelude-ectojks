@@ -24,7 +24,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     }
     print table_rows
 
-    html_content = """
+    htmlContent = """
         <table class=\"sortable pane bigtable stripped-odd\">
             <tr class=\"header\">${table_cols}</tr>
             ${table_rows}
@@ -32,12 +32,19 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
         <h4>${header}</h4>
     """
 
-    echo html_content
+    PolicyFactory policy = new HtmlPolicyBuilder()
+            .allowElements('table', 'tr', 'th', 'td', 'a')
+            .allowAttributes("class", "href")
+            .toFactory();
 
-    currentBuild.rawBuild.project.description = html_content
+    String safeHTML = policy.sanitize(htmlContent);
 
-    currentBuild.description = html_content
-    currentBuild.displayName = "Display Name"
+    print html_content
+
+    currentBuild.rawBuild.project.description = safeHTML
+
+    //currentBuild.description = html_content
+    //currentBuild.displayName = "Display Name"
 }
 
 def call(Map conf = [:]) {
