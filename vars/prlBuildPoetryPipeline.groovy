@@ -4,6 +4,8 @@
 
 def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) {
 
+    System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+
     header = conf['header'] ?: 'Default Header'
     cols = conf['cols'] ?: []
     rows = conf['rows'] ?: []
@@ -32,16 +34,17 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
         <h4>${header}</h4>
     """
 
+    /*
     PolicyFactory policy = new HtmlPolicyBuilder()
             .allowElements('table', 'tr', 'th', 'td', 'a')
             .allowAttributes("class", "href")
             .toFactory();
 
     String safeHTML = policy.sanitize(htmlContent);
-
+    */
     print html_content
 
-    currentBuild.rawBuild.project.description = safeHTML
+    currentBuild.rawBuild.project.description = htmlContent
 
     //currentBuild.description = html_content
     //currentBuild.displayName = "Display Name"
