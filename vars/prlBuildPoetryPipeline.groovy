@@ -2,6 +2,8 @@
  * Pipeline for Poetry build
  */
 
+import com.preludian.ectojs.JenkinsBuild
+
 def prlBuildFancyDescription(Map conf = [
         header: null,
         displayName: null,
@@ -52,7 +54,6 @@ def prlBuildFancyDescription(Map conf = [
 }
 
 def call(Map conf = [:]) {
-    import com.preludian.ectojs.JenkinsBuild
 
     pipeline {
         agent any
