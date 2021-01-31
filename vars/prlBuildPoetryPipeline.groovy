@@ -22,7 +22,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
         }
         table_rows << '</tr>'
     }
-    echo table_rows
+    print table_rows
 
     html_content = """<h4>${header}</h4>
         <table border=1>
