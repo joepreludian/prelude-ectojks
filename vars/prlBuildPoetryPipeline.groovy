@@ -42,7 +42,7 @@ def prlBuildFancyDescription(Map conf = [
         <h4>${header}</h4>
     """
 
-    if (setRootBuild) {
+    if (setRootBuild == true) {
         currentBuild.rawBuild.project.description = htmlContent
     }
 
@@ -71,6 +71,7 @@ def call(Map conf = [:]) {
                         prlBuildFancyDescription([
                                 header: "Whoami: ${return_whoami}",
                                 displayName: 'myBuild',
+                                setRootBuild: true,
                                 cols: ['Project', 'Version', 'Test'],
                                 rows: [
                                         ['Project name', 'Temp version', 'Test info'],
