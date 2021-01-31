@@ -28,6 +28,8 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
             ${table_rows}
         </table>"""
 
+    echo html_content
+
     currentBuild.rawBuild.project.description = html_content
 
     currentBuild.description = html_content
