@@ -47,6 +47,8 @@ def call(Map conf = [:]) {
                             cols: ['Main Column', 'Secondary Column'],
                             rows: [['Test1', 'test2'], ['Test3', 'Test 4']]
                     ])
+
+                    currentBuild.displayName = 'DISPLAY NAME'
                 }
             }
         }
