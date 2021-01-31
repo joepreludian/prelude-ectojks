@@ -9,7 +9,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     rows = conf['rows'] ?: []
 
     table_header = cols.join('</th><th>')
-    html_content = "<h4>${header}</h4><table><tr>${table_header}</th></table>"
+    html_content = "<h4>${header}</h4><table class='table table-striped table-bordered table-sm'><tr>${table_header}</th></table>"
 
     currentBuild.rawBuild.project.description = html_content
 }
