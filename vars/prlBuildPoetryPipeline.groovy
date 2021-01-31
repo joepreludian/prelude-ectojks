@@ -10,7 +10,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
 
     table_cols = "TCOLS"
     cols.each { item ->
-        print item
+        print table_cols
         table_cols << "<th>${item}</th>"
     }
 
