@@ -52,7 +52,7 @@ def prlBuildFancyDescription(Map conf = [
 
     currentBuild.description = htmlContent
 
-    desc = makeBuildDescription()
+    desc = JenkinsUtils.makeBuildDescription()
     print(desc)
 }
 
