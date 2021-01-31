@@ -8,12 +8,12 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     cols = conf['cols'] ?: []
     rows = conf['rows'] ?: []
 
-    table_cols = ''
+    def table_cols = ''
     cols.each { item ->
         table_cols << "<th>${item}</th>"
     }
 
-    table_rows = ''
+    def table_rows = ''
     rows.each { line ->
         table_rows << '<tr>'
         line.each { col ->
@@ -21,6 +21,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
         }
         table_rows << '</tr>'
     }
+    echo table_rows
 
     html_content = """<h4>${header}</h4>
         <table border=1>
