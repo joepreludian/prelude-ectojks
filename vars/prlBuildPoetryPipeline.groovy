@@ -16,7 +16,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
     table_rows = ''
     rows.each { line ->
         table_rows << '<tr>'
-        item.each { col ->
+        line.each { col ->
             table_rows << "<td>${col}</td>"
         }
         table_rows << '</tr>'
