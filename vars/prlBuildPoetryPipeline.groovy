@@ -42,7 +42,7 @@ def prlBuildFancyDescription(Map conf = [header: 'Header', cols: [], rows: []]) 
 
     String safeHTML = policy.sanitize(htmlContent);
     */
-    print html_content
+    print htmlContent
 
     currentBuild.rawBuild.project.description = htmlContent
 
