@@ -61,8 +61,7 @@ def call(Map conf = [:]) {
             stage('set diff vars') {
                 steps {
                     script {
-                        utils = new com.preludian.ectojs.JenkinsUtils()
-                        desc = utils.makeBuildDescription()
+                        desc = JenkinsUtils.makeBuildDescription()
                         print(desc)
 
                         return_whoami = sh script: 'whoami', returnStdout: true
