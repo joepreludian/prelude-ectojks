@@ -8,9 +8,11 @@ import java.nio.file.Paths
 import java.nio.file.Path
 
 
-def getInfo() {
+def getInfo(Map conf = [:]) {
 
-    Path source = Paths.get("./pyproject.toml");
+    project_toml = conf['file'] ?: 'pyproject.toml'
+
+    Path source = Paths.get(project_toml);
     TomlParseResult result = Toml.parse(source);
 
     return [
