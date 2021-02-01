@@ -10,7 +10,7 @@ def getInfo() {
     Path source = Paths.get("./pyproject.toml");
 
     TomlParseResult result = Toml.parse(source);
-    result.errors().forEach(error -> System.err.println(error.toString()));
+    //result.errors().forEach(error -> System.err.println(error.toString()));
 
     String value = result.getString("tool.poetry.version")
     return [
