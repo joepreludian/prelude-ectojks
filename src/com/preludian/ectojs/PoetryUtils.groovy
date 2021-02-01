@@ -10,7 +10,7 @@ import java.nio.file.Path
 
 def getInfo(Map conf = [:]) {
 
-    project_toml = conf['file'] ?: 'pyproject.toml'
+    project_toml = conf['file'] ?: "${env.WORKSPACE}/pyproject.toml"
 
     Path source = Paths.get(project_toml);
     TomlParseResult result = Toml.parse(source);
