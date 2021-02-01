@@ -3,7 +3,7 @@ package com.preludian.ectojs
 
 @Grab('org.tomlj:tomlj:1.0.0')
 
-import org.tomlj.Toml
+import org.tomlj.*
 import java.nio.file.Paths
 import java.nio.file.Path
 
