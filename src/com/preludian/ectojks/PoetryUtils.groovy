@@ -18,7 +18,7 @@ def getPoetryMetadata() {
         sh 'pip install toml==0.10.2'
 
         def jsonText = sh (script: 'python convert_toml.py --input pyproject.toml --output STDOUT',
-                returnStdout: True).trim()
+                returnStdout: true).trim()
 
         jsonOutput = readJson text: jsonText, returnPojo: true
     }
