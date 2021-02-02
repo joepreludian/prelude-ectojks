@@ -12,6 +12,7 @@ package com.preludian.ectojks
  * @return void
  */
 def loadFilesIntoWorkspace(Map conf = [package: '', files: []]) {
+    // @todo Add a way to specify a working dir like '_prl_pipeline_helpers'; also make sure it gets deleted after use
     srcPackage = conf['package'] ?: ''
     files = conf['files'] ?: []
 
