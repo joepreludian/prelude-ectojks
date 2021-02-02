@@ -23,7 +23,12 @@ def getPoetryMetadata() {
         jsonOutput = readJSON text: jsonText, returnPojo: true
     }
 
-    return jsonOutput
+    return [
+        fullOutput: jsonOutput,
+        name: jsonOutput['tool']['poetry']['name'],
+        version: jsonOutput['tool']['poetry']['version'],
+        description: jsonOutput['tool']['poetry']['description']
+    ]
 }
 
 return this
