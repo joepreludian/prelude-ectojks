@@ -20,7 +20,7 @@ def getPoetryMetadata() {
         def jsonText = sh (script: 'python convert_toml.py --input pyproject.toml --output STDOUT',
                 returnStdout: true).trim()
 
-        jsonOutput = readJson text: jsonText, returnPojo: true
+        jsonOutput = readJSON text: jsonText, returnPojo: true
     }
 
     return jsonOutput
