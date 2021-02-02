@@ -12,8 +12,8 @@ package com.preludian.ectojks
  * @return void
  */
 def loadFilesIntoWorkspace(Map conf = [package: '', files: []]) {
-    srcPackage = config['package'] ?: ''
-    files = config['files'] ?: []
+    srcPackage = conf['package'] ?: ''
+    files = conf['files'] ?: []
 
     files.each { filename ->
 
