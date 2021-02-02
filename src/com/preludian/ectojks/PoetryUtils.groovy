@@ -1,7 +1,5 @@
 package com.preludian.ectojks
 
-import com.preludian.ectojks.JenkinsUtils
-
 def getPoetryMetadata() {
 
     jenkinsUtils = new JenkinsUtils()
