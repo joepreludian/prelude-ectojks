@@ -1,6 +1,6 @@
 package com.preludian.ectojks
 
-Map getPoetryMetadata(Map conf = [:]) {
+def getPoetryMetadata() {
 
     jenkinsUtils = new JenkinsUtils()
     jsonOutput = null
