@@ -11,7 +11,7 @@ package com.preludian.ectojks
  *
  * @return void
  */
-void loadFilesIntoWorkspace(Map conf = [package: '', files: []]) {
+def loadFilesIntoWorkspace(Map conf = [package: '', files: []]) {
     srcPackage = config['package'] ?: ''
     files = config['files'] ?: []
 
@@ -38,7 +38,7 @@ void loadFilesIntoWorkspace(Map conf = [package: '', files: []]) {
  * ]
  * @return void
  */
-void buildFancyDescription(Map conf = [
+def buildFancyDescription(Map conf = [
         header: null,
         displayName: null,
         setRootBuild: false,
